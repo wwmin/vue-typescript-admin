@@ -39,33 +39,53 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
-import Component from 'vue-class-component'
-@Component
-export default class Hello extends Vue {
-  name: string = 'hello';
-  msg: string = 'Welcome to Your Vue.js App';
-} 
+  import {Component, Vue, Watch} from 'vue-property-decorator'
+
+  @Component
+  export default class Hello extends Vue {
+    name: string = 'hello';
+    msg: string = 'Welcome to Your Vue.js App';
+    activeListItemName: string = "";
+    activeRouteItemRoute: string = "";
+
+
+    created() {
+      console.log(this.name);
+    }
+
+    mounted() {
+      console.log(this.msg);
+      setTimeout(() => {
+        this.msg = "wwmin 你好啊."
+      }, 3000)
+    }
+
+
+    @Watch('msg', {immediate: true})
+    onMsgChanged(val: string, oldVal: string) {
+      console.log(val, oldVal);
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
+  h1,
+  h2 {
+    font-weight: normal;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
 
-a {
-  color: #42b983;
-}
+  a {
+    color: #42b983;
+  }
 </style>
