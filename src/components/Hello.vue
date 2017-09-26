@@ -39,15 +39,13 @@
 </template>
 
 <script lang="ts">
-import Vue, { ComponentOptions } from "vue"
-export default {
-  name: 'hello',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-} as ComponentOptions<Vue>
+import Vue from "vue"
+import Component from 'vue-class-component'
+@Component
+export default class Hello extends Vue {
+  name: string = 'hello';
+  msg: string = 'Welcome to Your Vue.js App';
+} 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
