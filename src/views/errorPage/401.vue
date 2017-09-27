@@ -26,24 +26,21 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import errGif from '../../assets/401_images/401.gif'
+  import {Component, Vue, Watch} from 'vue-property-decorator'
 
-  export default {
-    data() {
-      return {
-        errGif: errGif + '?' + +new Date(),
-        ewizardClap: 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
-        dialogVisible: false
-      }
-    },
-    methods: {
-      back() {
-        if (this.$route.query.noGoBack) {
-          this.$router.push({path: '/dashboard'})
-        } else {
-          this.$router.go(-1)
-        }
+  @Component
+  export default class noPermissionPage extends Vue {
+    errGif: string = errGif + '?' + +new Date();
+    ewizardClap: string = 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646';
+    dialogVisible: Boolean = false;
+
+    back() {
+      if (this.$route.query.noGoBack) {
+        this.$router.push({path: '/dashboard'})
+      } else {
+        this.$router.go(-1)
       }
     }
   }
