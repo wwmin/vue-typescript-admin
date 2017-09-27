@@ -2,14 +2,36 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '../components/Hello.vue'
 
-Vue.use(Router)
+const _import = require('./_import_' + process.env.NODE_ENV);
+Vue.use(Router);
+/* layout */
+import Layout from '../views/layout/Layout.vue'
 
+/**
+ * icon : the icon show in the sidebar
+ * hidden : if `hidden:true` will not show in the sidebar
+ * redirect : if `redirect:noredirect` will no redirct in the levelbar
+ * noDropdown : if `noDropdown:true` will has no submenu
+ * meta : { role: ['admin'] }  will control the page role
+ **/
+export const constantRouterMap = [
+  {
+    path: '/',
+    name: 'Hello',
+    component: Hello
+  },
+  {
+    path: '/home',
+    component: Layout,
+    name: '首页',
+    meta: {
+      text: "首页"
+    },
+    hidden: true
+  }
+];
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+  // mode: 'history', //后端支持可开
+  scrollBehavior: () => ({y: 0}),
+  routes: constantRouterMap
 })
