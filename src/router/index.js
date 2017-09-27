@@ -119,5 +119,25 @@ export const asyncRouterMap = [
       { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
     ]
   },
+  {
+    path: '/error',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '错误页面',
+    icon: '404',
+    children: [
+      { path: '401', component: _import('errorPage/401'), name: '401' },
+      { path: '404', component: _import('errorPage/404'), name: '404' }
+    ]
+  },
+  {
+    path: '/errlog',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'errlog',
+    icon: 'bug',
+    noDropdown: true,
+    children: [{ path: 'log', component: _import('errlog/index'), name: '错误日志' }]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ];
