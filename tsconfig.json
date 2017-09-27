@@ -4,6 +4,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "isolatedModules": true,
+    "noImplicitAny": false,
     "module": "es2015",
     "sourceMap": true,
     "allowJs": true,
