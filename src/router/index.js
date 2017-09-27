@@ -15,13 +15,16 @@ import Layout from '../views/layout/Layout.vue'
  * meta : { role: ['admin'] }  will control the page role
  **/
 export const constantRouterMap = [
+  { path: '/login', component: _import('login/index'), hidden: true },
   {
     path: '/',
+    component: Layout,
+    redirect: '/dashboard',
     name: '首页',
-    meta: {
-      text: "首页"
-    },
-    component: Layout
+    hidden: true,
+    children: [
+      {path: 'dashboard', component: _import('dashboard/index')}
+      ]
   },
   {
     path: '/404',
