@@ -35,6 +35,11 @@ export const constantRouterMap = [
     hidden: true
   },
   {
+    path: '/401',
+    component: _import('errorPage/401'),
+    hidden: true
+  },
+  {
     path: '*',
     name: 'errorPage',
     meta: {
