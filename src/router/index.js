@@ -28,6 +28,20 @@ export const constantRouterMap = [
       text: "首页"
     },
     hidden: true
+  },
+  {
+    path: '/404',
+    component: _import('errorPage/404'),
+    hidden: true
+  },
+  {
+    path: '*',
+    name: 'errorPage',
+    meta: {
+      text: "首页"
+    },
+    redirect: '/404',
+    hidden: true
   }
 ];
 export default new Router({
