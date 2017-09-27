@@ -33,7 +33,7 @@ export const constantRouterMap = [
     redirect: '/introduction/index',
     icon: 'people',
     noDropdown: true,
-    children: [{path: 'index', component: _import('introduction/index')}]
+    children: [{path: 'index', component: _import('introduction/index'), name: '简述'}]
   }
 ];
 export default new Router({
@@ -42,5 +42,15 @@ export default new Router({
   routes: constantRouterMap
 })
 export const asyncRouterMap = [
+  {
+    path: '/permission',
+    component: Layout,
+    redirect: '/permission/index',
+    name: '权限测试',
+    icon: 'lock',
+    meta: { role: ['admin'] },
+    noDropdown: true,
+    children: [{ path: 'index', component: _import('permission/index'), name: '权限测试页', meta: { role: ['admin'] }}]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ];
