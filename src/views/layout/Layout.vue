@@ -8,23 +8,24 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import Navbar from "./Navbar.vue"
   import Sidebar from "./Sidebar.vue"
   import AppMain from "./AppMain.vue"
+  import {Component, Vue, Watch} from 'vue-property-decorator'
 
-  export default {
-    name: 'layout',
+  @Component({
     components: {
       Navbar,
       Sidebar,
       AppMain
-    },
-    computed: {
-      sidebar() {
-        return this.$store.state.app.sidebar
-      }
     }
+  })
+  export default class layout extends Vue {
+    get sidebar() {
+      return this.$store.state.app.sidebar
+    }
+
   }
 </script>
 

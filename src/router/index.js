@@ -17,17 +17,11 @@ import Layout from '../views/layout/Layout.vue'
 export const constantRouterMap = [
   {
     path: '/',
-    name: 'Hello',
-    component: Hello
-  },
-  {
-    path: '/home',
-    component: Layout,
     name: '首页',
     meta: {
       text: "首页"
     },
-    hidden: true
+    component: Layout
   },
   {
     path: '/404',
@@ -54,3 +48,6 @@ export default new Router({
   scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
+export const asyncRouterMap = [
+  {path: '*', redirect: '/404', hidden: true}
+];
