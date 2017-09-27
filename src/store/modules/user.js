@@ -44,12 +44,10 @@ const user = {
   actions: {
     // 用户名登录
     LoginByUsername({commit}, userInfo) {
-      console.log(userInfo);
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         loginByUsername(username, userInfo.password).then(response => {
           const data = response.data;
-          console.log(data);
           setToken(response.data.token)
           commit('SET_TOKEN', data.token)
           resolve()
