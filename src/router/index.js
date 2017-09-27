@@ -94,5 +94,30 @@ export const asyncRouterMap = [
       { path: 'mixchart', component: _import('charts/mixChart'), name: '混合图表' }
     ]
   },
+  {
+    path: '/example',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '综合实例',
+    icon: 'example',
+    children: [
+      {
+        path: '/example/table',
+        component: _import('example/table/index'),
+        redirect: '/example/table/table',
+        name: 'Table',
+        icon: 'table',
+        children: [
+          { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
+          { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
+          { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
+          { path: 'table', component: _import('example/table/table'), name: '综合table' }
+        ]
+      },
+      { path: 'form/edit', icon: 'form', component: _import('example/form'), name: '编辑Form', meta: { isEdit: true }},
+      { path: 'form/create', icon: 'form', component: _import('example/form'), name: '创建Form' },
+      { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ];
