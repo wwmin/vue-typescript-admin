@@ -1,25 +1,68 @@
 <template>
-  <div class="content">
-    <div class="content-body padding-30 text-center">
-      <h1 style="font-size: 40px; color: green;">正 在 开 发 中 ...</h1>
-      <div style="color:#ccc;margin-top:60px">
-        <span style='display:inline-block;'>path: <b>{{$route.path}}</b></span>
-        <span style='display:inline-block;margin-left:20px'>title: <b>{{$route.meta.text}}</b></span>
-        <span style='display:inline-block;margin-left:20px'>name: <b>{{$route.name}}</b></span>
-        <span style='display:inline-block;margin-left:20px' v-for="item,key in $route.meta" :key="key">
-              {{key}}: <b>{{item}}</b>
-            </span>
-      </div>
+  <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
+    <sidebar class="sidebar-container"></sidebar>
+    <div class="main-container">
+      <navbar></navbar>
+      <app-main></app-main>
     </div>
   </div>
 </template>
-<script lang="ts">
-  import {Component, Vue, Watch} from 'vue-property-decorator'
 
-  @Component
-  export default class Layout extends Vue {
-    name: ""
+<script>
+  import Navbar from "./Navbar.vue"
+  import Sidebar from "./Sidebar.vue"
+  import AppMain from "./AppMain.vue"
+
+  export default {
+    name: 'layout',
+    components: {
+      Navbar,
+      Sidebar,
+      AppMain
+    },
+    computed: {
+      sidebar() {
+        return this.$store.state.app.sidebar
+      }
+    }
   }
 </script>
-<style lang="scss" rel="stylesheet/scss" scoped>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  @import "../../../src/styles/mixin.scss";
+
+  .app-wrapper {
+    @include clearfix;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    &.hideSidebar {
+      .sidebar-container {
+        width: 36px;
+        overflow: inherit;
+      }
+      .main-container {
+        margin-left: 36px;
+      }
+    }
+    .sidebar-container {
+      transition: width 0.28s ease-out;
+      width: 180px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1001;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none
+      }
+    }
+    .main-container {
+      min-height: 100%;
+      transition: margin-left 0.28s ease-out;
+      margin-left: 180px;
+    }
+  }
 </style>
