@@ -59,5 +59,26 @@ export const asyncRouterMap = [
     noDropdown: true,
     children: [{path: 'index', component: _import('svg-icons/index'), name: 'icons'}]
   },
+  {
+    path: '/components',
+    component: Layout,
+    redirect: '/components/index',
+    name: '组件',
+    icon: 'component',
+    children: [
+      {path: 'index', component: _import('components/index'), name: '介绍 '},
+      {path: 'tinymce', component: _import('components/tinymce'), name: '富文本编辑器'},
+      {path: 'markdown', component: _import('components/markdown'), name: 'Markdown'},
+      {path: 'jsoneditor', component: _import('components/jsonEditor'), name: 'JSON编辑器'},
+      {path: 'dndlist', component: _import('components/dndList'), name: '列表拖拽'},
+      {path: 'splitpane', component: _import('components/splitpane'), name: 'SplitPane'},
+      {path: 'avatarupload', component: _import('components/avatarUpload'), name: '头像上传'},
+      {path: 'dropzone', component: _import('components/dropzone'), name: 'Dropzone'},
+      {path: 'sticky', component: _import('components/sticky'), name: 'Sticky'},
+      {path: 'countto', component: _import('components/countTo'), name: 'CountTo'},
+      {path: 'mixin', component: _import('components/mixin'), name: '小组件'},
+      {path: 'backtotop', component: _import('components/backToTop'), name: '返回顶部'}
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ];
