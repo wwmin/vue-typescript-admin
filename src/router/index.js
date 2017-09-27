@@ -87,11 +87,11 @@ export const asyncRouterMap = [
     name: '图表',
     icon: 'chart',
     children: [
-      { path: 'index', component: _import('charts/index'), name: '介绍' },
-      { path: 'keyboard', component: _import('charts/keyboard'), name: '键盘图表' },
-      { path: 'keyboard2', component: _import('charts/keyboard2'), name: '键盘图表2' },
-      { path: 'line', component: _import('charts/line'), name: '折线图' },
-      { path: 'mixchart', component: _import('charts/mixChart'), name: '混合图表' }
+      {path: 'index', component: _import('charts/index'), name: '介绍'},
+      {path: 'keyboard', component: _import('charts/keyboard'), name: '键盘图表'},
+      {path: 'keyboard2', component: _import('charts/keyboard2'), name: '键盘图表2'},
+      {path: 'line', component: _import('charts/line'), name: '折线图'},
+      {path: 'mixchart', component: _import('charts/mixChart'), name: '混合图表'}
     ]
   },
   {
@@ -108,15 +108,15 @@ export const asyncRouterMap = [
         name: 'Table',
         icon: 'table',
         children: [
-          { path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table' },
-          { path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table' },
-          { path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑' },
-          { path: 'table', component: _import('example/table/table'), name: '综合table' }
+          {path: 'dynamictable', component: _import('example/table/dynamictable/index'), name: '动态table'},
+          {path: 'dragtable', component: _import('example/table/dragTable'), name: '拖拽table'},
+          {path: 'inline_edit_table', component: _import('example/table/inlineEditTable'), name: 'table内编辑'},
+          {path: 'table', component: _import('example/table/table'), name: '综合table'}
         ]
       },
-      { path: 'form/edit', icon: 'form', component: _import('example/form'), name: '编辑Form', meta: { isEdit: true }},
-      { path: 'form/create', icon: 'form', component: _import('example/form'), name: '创建Form' },
-      { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab' }
+      {path: 'form/edit', icon: 'form', component: _import('example/form'), name: '编辑Form', meta: {isEdit: true}},
+      {path: 'form/create', icon: 'form', component: _import('example/form'), name: '创建Form'},
+      {path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'Tab'}
     ]
   },
   {
@@ -126,8 +126,8 @@ export const asyncRouterMap = [
     name: '错误页面',
     icon: '404',
     children: [
-      { path: '401', component: _import('errorPage/401'), name: '401' },
-      { path: '404', component: _import('errorPage/404'), name: '404' }
+      {path: '401', component: _import('errorPage/401'), name: '401'},
+      {path: '404', component: _import('errorPage/404'), name: '404'}
     ]
   },
   {
@@ -137,7 +137,7 @@ export const asyncRouterMap = [
     name: 'errlog',
     icon: 'bug',
     noDropdown: true,
-    children: [{ path: 'log', component: _import('errlog/index'), name: '错误日志' }]
+    children: [{path: 'log', component: _import('errlog/index'), name: '错误日志'}]
   },
   {
     path: '/excel',
@@ -146,10 +146,19 @@ export const asyncRouterMap = [
     name: 'excel',
     icon: 'excel',
     children: [
-      { path: 'download', component: _import('excel/index'), name: '导出excel' },
-      { path: 'download2', component: _import('excel/selectExcel'), name: '导出已选择项' },
-      { path: 'upload', component: _import('excel/uploadExcel'), name: 'upload excel' }
+      {path: 'download', component: _import('excel/index'), name: '导出excel'},
+      {path: 'download2', component: _import('excel/selectExcel'), name: '导出已选择项'},
+      {path: 'upload', component: _import('excel/uploadExcel'), name: 'upload excel'}
     ]
+  },
+  {
+    path: '/theme',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'theme',
+    icon: 'theme',
+    noDropdown: true,
+    children: [{path: 'index', component: _import('theme/index'), name: '换肤'}]
   },
   {path: '*', redirect: '/404', hidden: true}
 ];
