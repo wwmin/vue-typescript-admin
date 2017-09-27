@@ -139,5 +139,17 @@ export const asyncRouterMap = [
     noDropdown: true,
     children: [{ path: 'log', component: _import('errlog/index'), name: '错误日志' }]
   },
+  {
+    path: '/excel',
+    component: Layout,
+    redirect: '/excel/download',
+    name: 'excel',
+    icon: 'excel',
+    children: [
+      { path: 'download', component: _import('excel/index'), name: '导出excel' },
+      { path: 'download2', component: _import('excel/selectExcel'), name: '导出已选择项' },
+      { path: 'upload', component: _import('excel/uploadExcel'), name: 'upload excel' }
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ];
