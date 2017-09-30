@@ -60,7 +60,15 @@ var webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
@@ -82,6 +90,22 @@ var webpackConfig = merge(baseWebpackConfig, {
             path.join(__dirname, '../node_modules')
           ) === 0
         )
+      }
+    }),
+    // split echarts into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      async: 'echarts',
+      minChunks(module) {
+        var context = module.context;
+        return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0);
+      }
+    }),
+    // split xlsx into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      async: 'xlsx',
+      minChunks(module) {
+        var context = module.context;
+        return context && (context.indexOf('xlsx') >= 0);
       }
     }),
     // extract webpack runtime and module manifest to its own file in order to
