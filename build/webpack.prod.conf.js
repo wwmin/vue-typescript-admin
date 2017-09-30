@@ -8,7 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var env = config.build.env
+var env = config.build[process.env.env_config+'Env']
 
 function resolveApp(relativePath) {
   return path.resolve(relativePath);
