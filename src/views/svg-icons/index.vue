@@ -1,10 +1,11 @@
 <template>
   <div class="icons-container">
     <div class="icons-wrapper">
-      <div v-for='item in iconsMap' :key='item' class='icon-item'>
+      <div v-for='item of iconsMap' :key='item' class='icon-item'
+           @click='handleClipboard(generateIconCode(item),$event)'>
         <el-tooltip placement="top" effect="light">
           <div slot="content">
-            {{`&lt;icon-svg :icon-class=&quot;${item}&quot; /&gt;`}}
+            {{generateIconCode(item)}}
           </div>
           <icon-svg :icon-class="item"/>
         </el-tooltip>
@@ -16,7 +17,7 @@
 
 <script>
   import icons from './generateIconsView'
-
+  import clipboard from '../../utils/clipboard' // use clipboard directly
   export default {
     data() {
       return {
@@ -28,6 +29,14 @@
         return i.default.id.split('-')[1]
       })
       this.iconsMap = iconsMap
+    },
+    methods: {
+      generateIconCode(symbol) {
+        return `<icon-svg :icon-class="${symbol}" />`
+      },
+      handleClipboard(text, event) {
+        clipboard(text, event)
+      }
     }
   }
 </script>

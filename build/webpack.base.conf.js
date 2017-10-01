@@ -21,8 +21,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')//使用typescript时,@符号不能识别路径,没找到合适方法
+      'vue$': 'vue/dist/vue.esm.js'
+      // '@': resolve('src')//使用typescript时,@符号不能识别路径,没找到合适方法
     }
   },
   module: {

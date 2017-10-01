@@ -26,7 +26,7 @@
 <script>
   import PanThumb from '../../components/PanThumb/index.vue'
   import MdInput from '../../components/MDinput/index.vue'
-  import waves from '../../directive/waves.js' // 水波纹指令
+  import waves from '../../directive/waves/waves.js' // 水波纹指令
   export default {
     components: {
       PanThumb,
